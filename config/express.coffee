@@ -7,7 +7,7 @@ cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 compress = require 'compression'
 methodOverride = require 'method-override'
-exphbs  = require 'express3-handlebars'
+exphbs  = require 'express-handlebars'
 
 module.exports = (app, config) ->
   app.engine 'handlebars', exphbs(
@@ -19,7 +19,7 @@ module.exports = (app, config) ->
   app.set 'view engine', 'handlebars'
 
   env = process.env.NODE_ENV || 'development'
-  app.locals.ENV = env;
+  app.locals.ENV = env
   app.locals.ENV_DEVELOPMENT = env == 'development'
 
   # app.use(favicon(config.root + '/public/img/favicon.ico'));
@@ -35,7 +35,7 @@ module.exports = (app, config) ->
 
   controllers = glob.sync config.root + '/app/controllers/**/*.coffee'
   controllers.forEach (controller) ->
-    require(controller)(app);
+    require(controller)(app)
 
   # catch 404 and forward to error handler
   app.use (req, res, next) ->
